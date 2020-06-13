@@ -1,0 +1,147 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lte IE 6]><html class="preIE7 preIE8 preIE9"><![endif]-->
+<!--[if IE 7]><html class="preIE8 preIE9"><![endif]-->
+<!--[if IE 8]><html class="preIE9"><![endif]-->
+<!--[if gte IE 9]><!--><html><!--<![endif]-->
+  <head>
+    <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}Pushpak{% endblock %}</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+  </head>
+  <body>
+
+  		<section id="bgImageWrapper"></section>	
+	  		<section id="navSectionContainer">
+	  			<div class="mainWrapper">
+	  				<section id="navWrapper">	
+		  					<div id="logoWrapper">
+		  						<a href="{% url 'home' %}">pushpak</a>
+		  					</div>
+	  				</section>
+	  			</div>
+	  		</section>
+
+	  		<section id="introWrapper">
+	  			<div class="mainWrapper">
+	  				
+	  				<section id="introContainer">
+
+	  					<section id="IC-insideWrapper" class="animation03">
+		  					<div class="close"><i class="fa fa-close"></i></div>
+		  					<div class="aboutWrapper">
+		  						<h2>hello, <br/>i'm pushpak <span>tiwari</span></h2>
+		  						<p>full stack web developer</p>
+		  						<p>my job is to shape your ideas into reality through my innovative and creative designs.</p>
+		  					</div>
+	  					</section>	
+
+	  					<section id="navBarSection">
+	  						<p>about pushpak</p>
+	  					</section>
+
+	  				</section>
+
+	  				<section id="fullScreenintroContainer">
+	  					<div id="introAboutMe">
+		  					<h2>hello, <br/>i'm pushpak <span>tiwari</span></h2>
+		  					<p>full stack web developer</p>
+		  					<p class="animation03 autotexts"></p>
+		  				</div>
+
+		  				<div class="btn">
+		  					<a href="#">contact me</a>
+		  				</div>
+	  				</section>
+
+	  			</div>	
+	  		</section>
+  		
+
+  		<script>
+
+  		function _(e){
+  			return document.getElementById(e);
+  		}	
+
+  		let card = _('IC-insideWrapper');
+  		let getDivs = card.getElementsByTagName('div');
+  		let close = document.getElementsByClassName('close')[0];
+  		let btnAbt = _('navBarSection');
+  		
+
+
+  		function init(){
+  			setTimeout(function(){
+  			card.style.width = '100%';
+  			setTimeout(function(){
+  				getDivs[0].style.opacity = '1';
+  				setTimeout(function(){
+  					getDivs[1].style.opacity = '1';
+  					},1000)
+  				},1000)
+  			},1000)
+  		}
+  		
+
+  		window.onload = init;
+
+  		close.addEventListener('click',function(){
+  			setTimeout(function(){
+  				getDivs[0].style.opacity = '0';
+  				getDivs[1].style.opacity = '0';
+  				setTimeout(function(){
+  					card.style.width = '0';
+  					setTimeout(function(){
+  						btnAbt.style.display = 'inline-block';	
+  					},1000);
+  				},1000);
+  			},500);
+  			
+  		})
+
+  		btnAbt.addEventListener('click',function(){
+  			init();
+  			setTimeout(function(){
+  				btnAbt.style.display = 'none';	
+  			},1000);
+  		})
+
+
+
+  	// Desktop Animation text	
+
+  	function autoType(){
+  		var i = 0;
+  		function autotyping(){
+  			let desktop = _('introAboutMe');
+  			let getPara = desktop.getElementsByClassName('autotexts');
+  			let fill = 'my job is to shape your ideas into reality through my innovative and creative designs.';
+  			if(i < fill.length){
+  				console.log(i);
+  				getPara[0].innerHTML += fill[i];
+  				i++;
+  			}
+
+
+
+  		}
+  		setInterval(autotyping,50);	
+  	}	
+  		
+  		setTimeout(autoType,1000);
+  		
+
+
+  	
+  		
+  		</script>	
+  </body>
+</html>
